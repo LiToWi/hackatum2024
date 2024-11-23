@@ -10,9 +10,10 @@ export const metadata = {
 }
 
 const links: { label: string; path: string }[] = [
-  /* { label: 'Account', path: '/account' }, */
-  /* { label: 'Clusters', path: '/clusters' }, */
-  /* { label: 'Create Event', path: '/events' }, */
+  { label: 'Account', path: '/account' },
+  { label: 'Clusters', path: '/clusters' },
+  { label: 'Basic Program', path: '/basic' },
+  { label: "My NFCs", path: '/nfts' },
 ]
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
