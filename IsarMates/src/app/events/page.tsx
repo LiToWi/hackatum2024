@@ -65,12 +65,24 @@ export default function EventsPage() {
   return (
     <div className="container mx-auto py-10">
       {/* Title Section */}
-      <div className="flex justify-center mb-6">
-        <h1 className="text-4xl font-bold">Upcoming Events</h1>
-      </div>
-
-      {/* Flex container for buttons and input */}
-      <div className="flex items-center justify-center space-x-4">
+      <div className="relative flex items-center justify-center mb-6">
+        <h1 className="absolute left-0 text-4xl font-bold">Upcoming Events</h1>
+        {/* Search&Filter Section*/}
+        <div className="flex items-center space-x-2">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="input input-bordered input-lg flex-grow"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button
+            onClick={() => setShowFilterModal(true)}
+            className="btn-lg text-white bg-blue-500 rounded hover:bg-blue-600"
+          >
+            Filter
+          </button>
+        </div>
         <button
           onClick={() => alert("Add event functionality coming soon!")}
           className="btn-lg text-white bg-blue-500 rounded hover:bg-blue-600"
