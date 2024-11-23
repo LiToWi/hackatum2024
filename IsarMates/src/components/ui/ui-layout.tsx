@@ -118,7 +118,7 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
               create-solana-dapp
             </a>
             */}
-            IsarMate by Oskar, Mika, Linus and Fabian for HackaTUM2024
+            IsarMates by Oskar, Mika, Linus and Fabian for HackaTUM2024
           </p>
         </aside>
       </footer>
