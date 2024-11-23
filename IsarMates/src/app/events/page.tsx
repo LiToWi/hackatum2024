@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import eventsData from "@/data/events.json";
 import Link from "next/link";
 import { FaUser, FaTree, FaUtensils, FaHome } from "react-icons/fa";
@@ -23,6 +23,7 @@ export default function EventsPage() {
   const [events, setEvents] = useState<Event[]>(eventsData.events);
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const modalRef = useRef<HTMLDivElement | null>(null); // Reference for the modal content
 
   const categories = [
     { name: "Outdoor", icon: <FaTree /> },
@@ -47,6 +48,12 @@ export default function EventsPage() {
         )
       : events;
 
+  const closeModalOnOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+      setShowFilterModal(false);
+    }
+  };
+
   return (
     <div className="container mx-auto py-10">
       {/* Title Section */}
@@ -67,7 +74,7 @@ export default function EventsPage() {
         </div>
 
         <button
-          onClick={() => setShowModal(true)}
+          onClick={() => alert("Add event functionality coming soon!")}
           className="absolute right-0 bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
         >
           + Add New Event
@@ -109,8 +116,14 @@ export default function EventsPage() {
 
       {/* Filter Modal */}
       {showFilterModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-gray-700 rounded-lg p-6 w-full max-w-lg shadow-lg">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          onClick={closeModalOnOutsideClick}
+        >
+          <div
+            ref={modalRef}
+            className="bg-gray-700 rounded-lg p-6 w-full max-w-lg shadow-lg"
+          >
             <h2 className="text-2xl font-bold mb-4">Filter by Category</h2>
             <div className="space-y-4">
               {categories.map((category) => (
