@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Next.js
+.next/
+out/
+*.log
+
+# Rust
+target/
+Cargo.lock
+
+# Anker
+.anker/
+
+# CSS
+*.css.map
+
+# HTML
+*.html.map
+
+# JavaScript
+*.js.map
