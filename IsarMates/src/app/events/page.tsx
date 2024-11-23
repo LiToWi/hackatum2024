@@ -67,6 +67,7 @@ export default function EventsPage() {
       {/* Title Section */}
       <div className="relative flex items-center justify-center mb-6">
         <h1 className="absolute left-0 text-4xl font-bold">Upcoming Events</h1>
+        {/* Search&Filter Section*/}
         <div className="flex items-center space-x-2">
           <input
             type="text"
