@@ -22,7 +22,8 @@ interface Event {
 export default function EventsPage() {
   const [events, setEvents] = useState<Event[]>(eventsData.events);
   const [showFilterModal, setShowFilterModal] = useState(false);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]); 
+  const [searchTerm, setSearchTerm] = useState("");
 
   const categories = [
     { name: "Outdoor", icon: <FaTree /> },
@@ -38,14 +39,21 @@ export default function EventsPage() {
     );
   };
 
-  const filteredEvents =
-    selectedCategories.length > 0
-      ? events.filter((event) =>
-          event.category?.some((category) =>
+  // updated block to combine filter and search 
+  const filteredEvents = events.filter((event) => {
+    const matchesSearch = searchTerm
+      ? event.title.toLowerCase().includes(searchTerm.toLowerCase())
+      : true;
+
+    const matchesCategory =
+      selectedCategories.length > 0
+        ? event.category.some((category) =>
             selectedCategories.includes(category)
           )
-        )
-      : events;
+        : true;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="container mx-auto py-10">
@@ -57,6 +65,8 @@ export default function EventsPage() {
             type="text"
             placeholder="Search..."
             className="input input-bordered input-lg flex-grow"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button
             onClick={() => setShowFilterModal(true)}
@@ -65,7 +75,6 @@ export default function EventsPage() {
             Filter
           </button>
         </div>
-
         <button
           onClick={() => setShowModal(true)}
           className="absolute right-0 bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
