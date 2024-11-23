@@ -59,16 +59,23 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
             {showAccountMenu && (
               <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-32">
                 <li>
-                  <Link href="/events">
+                  <Link href="/my-events">
                     <button className="btn btn-xs lg:btn-md btn-outline">
-                      Events
+                      My Events
                     </button>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/profile">
+                  <Link href="/account">
                     <button className="btn btn-xs lg:btn-md btn-outline">
-                      Profile
+                      My Profile
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/nfts">
+                    <button className="btn btn-xs lg:btn-md btn-outline">
+                      My NFT Badges
                     </button>
                   </Link>
                 </li>

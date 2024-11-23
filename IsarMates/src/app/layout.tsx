@@ -10,7 +10,7 @@ export const metadata = {
 }
 
 const links: { label: string; path: string }[] = [
-  { label: "My NFTs", path: '/nfts' },
+  { label: "To Github", path: 'https://github.com/LiToWi/hackatum2024' },
 ]
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
