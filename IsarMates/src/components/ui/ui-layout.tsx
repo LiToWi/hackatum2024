@@ -14,6 +14,7 @@ import {WalletButton} from '../solana/solana-provider'
 
 export function UiLayout({ children, links }: { children: ReactNode; links: { label: string; path: string }[] }) {
   const pathname = usePathname()
+  const [showAccountMenu, setShowAccountMenu] = React.useState(false)
 
   return (
     <div className="h-full flex flex-col">
@@ -35,15 +36,40 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
             ))}
           </ul>
         </div>
+
         <div className="flex-none flex items-center space-x-2 ml-auto">
           {/* <WalletButton /> */}
           {/*<AccountChecker /> */}
           {/* <ClusterUiSelect /> */}
           {/* new Buttons on the Right */}
           <WalletButton />
-          <Link href="/account">
-            <button className="btn btn-primary">Account</button>
-          </Link>
+          <div className="dropdown dropdown-end">
+            <button
+              className="btn btn-primary"
+              onClick={() => setShowAccountMenu(!showAccountMenu)}
+            >
+              Account
+            </button>
+            {showAccountMenu && (
+              <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-32">
+                <li>
+                  <Link href="/events">
+                    <button className="btn btn-xs lg:btn-md btn-outline">
+                      Events
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/profile">
+                    <button className="btn btn-xs lg:btn-md btn-outline">
+                      Profile
+                    </button>
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </div>
+
           <Link href="/events">
             <button className="btn btn-secondary">Create Event</button>
             </Link>
