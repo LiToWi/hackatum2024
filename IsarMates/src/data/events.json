@@ -1,6 +1,6 @@
 {
   "events": [
-      {
+      { 
           "event_id": 1,
           "title": "Park Cleanup Event",
           "description": "Join us in cleaning up the beautiful English Garden. Help us keep Munich green and pristine. This is a great opportunity to meet like-minded individuals who care about the environment while enjoying fresh air and scenic surroundings. We’ll provide all the necessary tools; just bring your enthusiasm!",
@@ -11,7 +11,8 @@
           "image": "/event-images/park_cleanup.jpg",
           "duration": "2 hours",
           "participants": 12,
-          "max_participants": 20
+          "max_participants": 20,
+          "category": ["Outdoor"]
       },
       {
           "event_id": 2,
@@ -24,7 +25,8 @@
           "image": "/event-images/soup_kitchen.jpg",
           "duration": "3 hours",
           "participants": 10,
-          "max_participants": 15
+          "max_participants": 15,
+          "category": ["Indoor", "Food"]
       },
       {
           "event_id": 3,
@@ -37,7 +39,8 @@
           "image": "/event-images/tree_planting.jpg",
           "duration": "4 hours",
           "participants": 12,
-          "max_participants": 30
+          "max_participants": 30,
+          "category": ["Outdoor"]
       },
       {
           "event_id": 4,
@@ -50,7 +53,8 @@
           "image": "/event-images/music_jam.jpg",
           "duration": "2.5 hours",
           "participants": 4,
-          "max_participants": 12
+          "max_participants": 12,
+          "category": ["Indoor"]
       },
       {
           "event_id": 5,
@@ -63,7 +67,8 @@
           "image": "/event-images/coffee_meetup.jpg",
           "duration": "1.5 hours",
           "participants": 6,
-          "max_participants": 10
+          "max_participants": 10,
+          "category": ["Indoor", "Outdoor", "Food"]
       },
       {
           "event_id": 6,
@@ -76,7 +81,8 @@
           "image": "/event-images/sewing_workshop.jpg",
           "duration": "3 hours",
           "participants": 3,
-          "max_participants": 8
+          "max_participants": 8,
+          "category": ["Indoor"]
       },
       {
           "event_id": 7,
@@ -89,7 +95,8 @@
           "image": "/event-images/book_drive.jpg",
           "duration": "2 hours",
           "participants": 9,
-          "max_participants": 15
+          "max_participants": 15,
+          "category": ["Food"]
       },
       {
           "event_id": 8,
@@ -102,7 +109,8 @@
           "image": "/event-images/food_market.jpg",
           "duration": "5 hours",
           "participants": 7,
-          "max_participants": 10
+          "max_participants": 10,
+          "category": ["Food"]
       },
       {
           "event_id": 9,
@@ -115,7 +123,8 @@
           "image": "/event-images/river_cleanup.jpg",
           "duration": "3 hours",
           "participants": 18,
-          "max_participants": 25
+          "max_participants": 25,
+          "category": ["Outdoor"]
       },
       {
           "event_id": 10,
@@ -128,7 +137,8 @@
           "image": "/event-images/discussion_circle.jpg",
           "duration": "2 hours",
           "participants": 11,
-          "max_participants": 20
+          "max_participants": 20,
+          "category": ["Indoor"]
       }
-  ]
+    ]
 }
