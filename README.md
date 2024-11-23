@@ -19,3 +19,5 @@
 ├──────────────────────────────────────────────────────╯
 
 Wallet via TipLink
+
+SOL Test via <solana-test-validator>
