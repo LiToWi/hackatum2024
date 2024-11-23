@@ -40,6 +40,7 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
           {/*<AccountChecker /> */}
           {/* <ClusterUiSelect /> */}
           {/* new Buttons on the Right */}
+          <WalletButton />
           <Link href="/account">
             <button className="btn btn-primary">Account</button>
           </Link>
