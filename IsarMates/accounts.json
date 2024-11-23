@@ -11,8 +11,9 @@
           "city": "Musterstadt",
           "postalCode": "12345"
         },
-        "userID": "user12345",
-        "walletAddress": "0x123abc456def789ghi",
+        "userID": "user1",
+        "password": "1",
+        "walletAddress": "8mnLs5BBypWtjsEmPTJSLS6Z9tXSv3B2bGb99iudAqtH",
         "eventHistory": ["event001", "event002"]
       },
       {
@@ -26,8 +27,9 @@
           "city": "Berlin",
           "postalCode": "10115"
         },
-        "userID": "user54321",
-        "walletAddress": "0x456def123abc789ghi",
+        "userID": "user2",
+        "password": "2",
+        "walletAddress": "6zXdLWW9mRDqfYemESMr7fV4TssbicbVDBnXhoVKH8CF",
         "eventHistory": ["event003", "event004"]
       },
       {
@@ -41,114 +43,10 @@
           "city": "Hamburg",
           "postalCode": "20457"
         },
-        "userID": "user67890",
-        "walletAddress": "0x789ghi456def123abc",
+        "userID": "user3",
+        "password": "3", 
+        "walletAddress": "C56VVW85uQwxgGw9NsjHwSQ4C2pCpFRjRarXZxLwyVJj",
         "eventHistory": ["event005", "event006"]
-      },
-      {
-        "name": "Smith",
-        "vorname": "Anna",
-        "emailAddress": "anna.smith@example.com",
-        "profilePicture": "IsarMates/public/logos/user-images/AnnaSmith.jpeg",
-        "telephoneNumber": "+491742345678",
-        "address": {
-          "street": "Seestraße 45",
-          "city": "München",
-          "postalCode": "80331"
-        },
-        "userID": "user98765",
-        "walletAddress": "0xabc123def456ghi789",
-        "eventHistory": ["event007", "event008"]
-      },
-      {
-        "name": "König",
-        "vorname": "Michael",
-        "emailAddress": "michael.könig@example.com",
-        "profilePicture": "IsarMates/public/logos/user-images/MichaelKönig.jpeg",
-        "telephoneNumber": "+491772345678",
-        "address": {
-          "street": "Friedrichstraße 60",
-          "city": "Frankfurt",
-          "postalCode": "60311"
-        },
-        "userID": "user56789",
-        "walletAddress": "0xghi789abc123def456",
-        "eventHistory": ["event009", "event010"]
-      },
-      {
-        "name": "Lee",
-        "vorname": "Sophie",
-        "emailAddress": "sophie.lee@example.com",
-        "profilePicture": "IsarMates/public/logos/user-images/SophieLee.jpeg",
-        "telephoneNumber": "+491722345678",
-        "address": {
-          "street": "Goethestraße 21",
-          "city": "Stuttgart",
-          "postalCode": "70173"
-        },
-        "userID": "user34567",
-        "walletAddress": "0xdef456ghi789abc123",
-        "eventHistory": ["event011", "event012"]
-      },
-      {
-        "name": "Miller",
-        "vorname": "Thomas",
-        "emailAddress": "thomas.miller@example.com",
-        "profilePicture": "IsarMates/public/logos/user-images/ThomasMiller.jpeg",
-        "telephoneNumber": "+491742348901",
-        "address": {
-          "street": "Hauptstraße 18",
-          "city": "Düsseldorf",
-          "postalCode": "40213"
-        },
-        "userID": "user65432",
-        "walletAddress": "0x456abc789def123ghi",
-        "eventHistory": ["event013", "event014"]
-      },
-      {
-        "name": "Jones",
-        "vorname": "Emma",
-        "emailAddress": "emma.jones@example.com",
-        "profilePicture": "IsarMates/public/logos/user-images/EmmaJones.jpeg",
-        "telephoneNumber": "+491512340987",
-        "address": {
-          "street": "Lindenstraße 5",
-          "city": "Köln",
-          "postalCode": "50667"
-        },
-        "userID": "user43210",
-        "walletAddress": "0x789def456ghi123abc",
-        "eventHistory": ["event015", "event016"]
-      },
-      {
-        "name": "Brown",
-        "vorname": "Daniel",
-        "emailAddress": "daniel.brown@example.com",
-        "profilePicture": "IsarMates/public/logos/user-images/DanielBrown.jpeg",
-        "telephoneNumber": "+491712348567",
-        "address": {
-          "street": "Schillerstraße 9",
-          "city": "Leipzig",
-          "postalCode": "04109"
-        },
-        "userID": "user32109",
-        "walletAddress": "0xabc789456def123ghi",
-        "eventHistory": ["event017", "event018"]
-      },
-      {
-        "name": "White",
-        "vorname": "Laura",
-        "emailAddress": "laura.white@example.com",
-        "profilePicture": "IsarMates/public/logos/user-images/LauraWhite.jpeg",
-        "telephoneNumber": "+491782340987",
-        "address": {
-          "street": "Marktstraße 3",
-          "city": "Hannover",
-          "postalCode": "30159"
-        },
-        "userID": "user21098",
-        "walletAddress": "0x123ghi789abc456def",
-        "eventHistory": ["event019", "event020"]
       }
     ]
   }
