@@ -9,6 +9,8 @@ import toast, {Toaster} from 'react-hot-toast'
 import {AccountChecker} from '../account/account-ui'
 import {ClusterChecker, ClusterUiSelect, ExplorerLink} from '../cluster/cluster-ui'
 import {WalletButton} from '../solana/solana-provider'
+import PathButton from './pathButton'
+
 /* Inserted picture "Logo" ?? */
 /*import {EventButton} from '../event/event-ui' ??*/
 
@@ -59,33 +61,17 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
             {showAccountMenu && (
               <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-32">
                 <li>
-                  <Link href="/my-events">
-                    <button className="btn btn-xs lg:btn-md btn-outline">
-                      My Events
-                    </button>
-                  </Link>
+                  <PathButton name="My Events" path_to="/my-events" tailwind="btn btn-xs lg:btn-md btn-outline" />
                 </li>
                 <li>
-                  <Link href="/account">
-                    <button className="btn btn-xs lg:btn-md btn-outline">
-                      My Profile
-                    </button>
-                  </Link>
+                  <PathButton name="My Profile" path_to="/account" tailwind="btn btn-xs lg:btn-md btn-outline" />
                 </li>
                 <li>
-                  <Link href="/nfts">
-                    <button className="btn btn-xs lg:btn-md btn-outline">
-                      My NFT Badges
-                    </button>
-                  </Link>
+                  <PathButton name="My NFT Badges" path_to="/nfts" tailwind="btn btn-xs lg:btn-md btn-outline" />
                 </li>
               </ul>
             )}
           </div>
-
-          <Link href="/events">
-            <button className="btn btn-secondary">Create Event</button>
-          </Link>
         </div>
       </div>
       <ClusterChecker>
