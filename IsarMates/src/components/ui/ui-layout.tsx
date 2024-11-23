@@ -22,7 +22,7 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
         <div className="flex-1">
           <Link className="btn btn-ghost normal-case text-xl" href="/">
             {/* Inserted picture "Logo" */}
-            <img className="h-4 md:h-6" alt="Logo" src="/logos/Logo.png" />
+            <img className="h-4 md:h-12" alt="Logo" src="/logos/Logo.png" />
           </Link>
           {/* Inserted text "IsarMates" */}
           <span className="ml-2 text-xl font-semibold">IsarMates</span>
