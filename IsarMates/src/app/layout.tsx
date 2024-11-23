@@ -10,7 +10,7 @@ export const metadata = {
 }
 
 const links: { label: string; path: string }[] = [
-  { label: "My NFCs", path: '/nfts' },
+  { label: "My NFTs", path: '/nfts' },
 ]
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -43,6 +43,12 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
           {/* <ClusterUiSelect /> */}
           {/* new Buttons on the Right */}
           <WalletButton />
+          <button
+              className="btn btn-primary"
+              onClick={() => false}
+            >
+              Ein Button
+            </button>
           <div className="dropdown dropdown-end">
             <button
               className="btn btn-primary"
@@ -72,7 +78,7 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
 
           <Link href="/events">
             <button className="btn btn-secondary">Create Event</button>
-            </Link>
+          </Link>
         </div>
       </div>
       <ClusterChecker>
