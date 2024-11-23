@@ -51,6 +51,7 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
             >
               Ein Button
             </button>
+          <PathButton name="Browse for Events" path_to="/events" tailwind="btn btn-primary" />
           <div className="dropdown dropdown-end">
             <button
               className="btn btn-primary"
@@ -59,7 +60,7 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
               Account
             </button>
             {showAccountMenu && (
-              <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-32">
+              <ul tabIndex={0} className="dropdown-content menu p-1 shadow bg-base-100 rounded-box w-32">
                 <li>
                   <PathButton name="My Events" path_to="/my-events" tailwind="btn btn-xs lg:btn-md btn-outline" />
                 </li>
