@@ -1,47 +1,71 @@
 "use client";
-
-// Navigation: Replace alert with router.push("/your-route") if using Next.js for navigation.
+import { useRouter } from "next/navigation"; // Correct import for useRouter in "use client" context
 
 export default function DashboardFeature() {
+  const router = useRouter(); // Initialize the router instance
+
   return (
-    <div className="container mx-auto py-10">
-      {/* Headline */}
-      <h1 className="text-5xl font-bold mb-8 text-center">IsarMates</h1>
-      {/* Welcome Message */}
-      <p className="text-lg text-gray-700 mb-12 text-center">
-        Welcome to IsarMates. This is your platform to...
-      </p>
-      {/* Grid of Larger Buttons */}
-      <div className="grid grid-cols-2 gap-10 w-full max-w-6xl">
-        {/* Discover Events */}
+    <div className="w-screen h-screen overflow-hidden grid grid-cols-2 grid-rows-2 gap-4 p-4 h-[95%]">
+      {/* Discover Events */}
+      <div className="relative overflow-hidden rounded-lg shadow-lg">
         <button
-          onClick={() => alert("Discover Events clicked")}
-          className="flex items-center justify-center bg-white border border-pink-600 rounded-xl shadow-lg p-20 text-center text-2xl font-bold hover:bg-blue-300 transition-all"
+          onClick={() => router.push("/events")}
+          className="relative w-full h-full bg-cover bg-center text-white transition-transform duration-300 hover:scale-105"
+          style={{
+            backgroundImage: "url('/start-images/wave.jpg')", // Replace with your image path
+          }}
         >
-          Discover Events
+          <div className="bg-black bg-opacity-50 h-full flex items-center justify-center">
+            <span className="text-3xl md:text-5xl font-bold z-10">Discover Events</span>
+          </div>
         </button>
-        {/* Claim Rewards */}
+      </div>
+
+      {/* Claim NFT Rewards */}
+      <div className="relative overflow-hidden rounded-lg shadow-lg">
         <button
-          onClick={() => alert("Claim Rewards clicked")}
-          className="flex items-center justify-center bg-white border border-pink-600 rounded-xl shadow-lg p-20 text-center text-2xl font-bold hover:bg-blue-300 transition-all"
+          onClick={() => router.push("/nfts")}
+          className="relative w-full h-full bg-cover bg-center text-white transition-transform duration-300 hover:scale-105"
+          style={{
+            backgroundImage: "url('/start-images/rewards.jpeg')", // Replace with your image path
+          }}
         >
-          Claim Rewards
+          <div className="bg-black bg-opacity-50 h-full flex items-center justify-center">
+            <span className="text-3xl md:text-5xl font-bold z-10">Claim NFT Rewards</span>
+          </div>
         </button>
-        {/* Connect with Citizens */}
+      </div>
+
+      {/* Connect with Citizens */}
+      <div className="relative overflow-hidden rounded-lg shadow-lg">
         <button
           onClick={() => alert("Connect with Citizens clicked")}
-          className="flex items-center justify-center bg-white border border-pink-600 rounded-xl shadow-lg p-20 text-center text-2xl font-bold hover:bg-blue-300 transition-all"
+          className="relative w-full h-full bg-cover bg-center text-white transition-transform duration-300 hover:scale-105"
+          style={{
+            backgroundImage: "url('/start-images/connections.jpeg')", // Replace with your image path
+          }}
         >
-          Connect with Citizens
+          <div className="bg-black bg-opacity-50 h-full flex items-center justify-center">
+            <span className="text-3xl md:text-5xl font-bold z-10">Connect with Citizens</span>
+          </div>
         </button>
-        {/* Get Help */}
+      </div>
+
+      {/* Get Help */}
+      <div className="relative overflow-hidden rounded-lg shadow-lg">
         <button
           onClick={() => alert("Get Help clicked")}
-          className="flex items-center justify-center bg-white border border-pink-600 rounded-xl shadow-lg p-20 text-center text-2xl font-bold hover:bg-blue-300 transition-all"
+          className="relative w-full h-full bg-cover bg-center text-white transition-transform duration-300 hover:scale-105"
+          style={{
+            backgroundImage: "url('/start-images/helping_hands.jpeg')", // Replace with your image path
+          }}
         >
-          Get Help
+          <div className="bg-black bg-opacity-50 h-full flex items-center justify-center">
+            <span className="text-3xl md:text-5xl font-bold z-10">Get Help & Info</span>
+          </div>
         </button>
       </div>
     </div>
   );
 }
+
