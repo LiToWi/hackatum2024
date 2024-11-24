@@ -87,7 +87,7 @@ import {
     }
   };
   
-  
+  // example
   createNft({
     name: "Thomas Miller",
     month: "November",
