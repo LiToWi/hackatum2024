@@ -10,6 +10,7 @@ import {AccountChecker} from '../account/account-ui'
 import {ClusterChecker, ClusterUiSelect, ExplorerLink} from '../cluster/cluster-ui'
 import {WalletButton} from '../solana/solana-provider'
 import PathButton from './pathButton'
+import { createNft } from 'src/app/create_nft'
 
 /* Inserted picture "Logo" ?? */
 /*import {EventButton} from '../event/event-ui' ??*/
@@ -47,7 +48,7 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
           <WalletButton />
           <button
               className="btn btn-primary"
-              onClick={() => false}
+              onClick={() => createNft({name: "Test", month:"12", year:"2024"})}
             >
               Ein Button
             </button>
@@ -202,3 +203,11 @@ export function useTransactionToast() {
     )
   }
 }
+
+const handleClick = () => {
+  createNft({
+    name: "Test NFT",
+    month: "12",
+    year: "2024",
+  });
+};
