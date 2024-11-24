@@ -24,6 +24,7 @@ import {
     const admin = createSignerFromKeypair(umi, kp);
     umi.use(signerIdentity(admin));
   
+
     const badgeUri = "https://ivory-rear-earthworm-308.mypinata.cloud/ipfs/QmZeoV4wmBX1FNdMe8WrC6Rwpjh82LpqeRqqWYket7BS1e"
     const logoUri = "https://ivory-rear-earthworm-308.mypinata.cloud/ipfs/QmSeknpbhviWsbcQBBjYeXR7GzjHqWAb7rp656GhCSsrL6"
   
@@ -86,7 +87,7 @@ import {
     }
   };
   
-  // Example Usage
+  
   createNft({
     name: "Thomas Miller",
     month: "November",
