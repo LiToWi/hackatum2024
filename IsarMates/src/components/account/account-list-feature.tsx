@@ -13,10 +13,9 @@ export default function AccountListFeature() {
   }
 
   return (
-    <div className="hero py-[64px]">
-      <div className="hero-content text-center">
-        <WalletButton />
-      </div>
+    <div className='flex mt-[10%] flex-col justify-center items-center'>
+      <h1 className='text-4xl'> Please Login with your Wallet first!</h1>
+      <img className="w-[80%]" src='./Wallet-amico.svg'/>
     </div>
-  )
+  );
 }

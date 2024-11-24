@@ -1,46 +1,47 @@
-'use client'
+"use client";
 
-import { AppHero } from '../ui/ui-layout'
-
-const links: { label: string; href: string }[] = [
-  { label: 'Event 1', href: 'https://docs.solana.com/' },
-  { label: 'Event 2', href: 'https://faucet.solana.com/' },
-  { label: 'Event 3', href: 'https://solanacookbook.com/' },
-]
+// Navigation: Replace alert with router.push("/your-route") if using Next.js for navigation.
 
 export default function DashboardFeature() {
   return (
-    <div>
-      <div className="hero py-10">
-        <div className="hero-content text-center">
-          <div className="max-w-xl">
-            {/* Search bar with filter button */}
-            <div className="flex items-center space-x-2">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="input input-bordered input-lg flex-grow"
-              />
-              <button className="btn btn-primary btn-lg">
-                Filter
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="max-w-xl mx-auto py-6 sm:px-6 lg:px-8 text-center">
-        <div className="space-y-2">
-          {/* Changed from Links to Event Display*/} 
-          <p>Current Events:</p>
-          {links.map((link, index) => (
-            <div key={index}>
-              <a href={link.href} className="link" target="_blank" rel="noopener noreferrer">
-                {link.label}
-              </a>
-            </div>
-          ))}
-        </div>
+    <div className="container mx-auto py-10">
+      {/* Headline */}
+      <h1 className="text-5xl font-bold mb-8 text-center">IsarMates</h1>
+      {/* Welcome Message */}
+      <p className="text-lg text-gray-700 mb-12 text-center">
+        Welcome to IsarMates. This is your platform to...
+      </p>
+      {/* Grid of Larger Buttons */}
+      <div className="grid grid-cols-2 gap-10 w-full max-w-6xl">
+        {/* Discover Events */}
+        <button
+          onClick={() => alert("Discover Events clicked")}
+          className="flex items-center justify-center bg-white border border-pink-600 rounded-xl shadow-lg p-20 text-center text-2xl font-bold hover:bg-blue-300 transition-all"
+        >
+          Discover Events
+        </button>
+        {/* Claim Rewards */}
+        <button
+          onClick={() => alert("Claim Rewards clicked")}
+          className="flex items-center justify-center bg-white border border-pink-600 rounded-xl shadow-lg p-20 text-center text-2xl font-bold hover:bg-blue-300 transition-all"
+        >
+          Claim Rewards
+        </button>
+        {/* Connect with Citizens */}
+        <button
+          onClick={() => alert("Connect with Citizens clicked")}
+          className="flex items-center justify-center bg-white border border-pink-600 rounded-xl shadow-lg p-20 text-center text-2xl font-bold hover:bg-blue-300 transition-all"
+        >
+          Connect with Citizens
+        </button>
+        {/* Get Help */}
+        <button
+          onClick={() => alert("Get Help clicked")}
+          className="flex items-center justify-center bg-white border border-pink-600 rounded-xl shadow-lg p-20 text-center text-2xl font-bold hover:bg-blue-300 transition-all"
+        >
+          Get Help
+        </button>
       </div>
     </div>
-  )
+  );
 }
