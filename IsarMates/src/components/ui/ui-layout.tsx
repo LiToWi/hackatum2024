@@ -11,13 +11,16 @@ import {ClusterChecker, ClusterUiSelect, ExplorerLink} from '../cluster/cluster-
 import {WalletButton} from '../solana/solana-provider'
 import PathButton from './pathButton'
 import { createNft } from 'src/app/create_nft'
+import { useRouter } from "next/navigation"; // Correct import for useRouter in "use client" context
 
 /* Inserted picture "Logo" ?? */
 /*import {EventButton} from '../event/event-ui' ??*/
+  
 
 export function UiLayout({ children, links }: { children: ReactNode; links: { label: string; path: string }[] }) {
   const pathname = usePathname()
   const [showAccountMenu, setShowAccountMenu] = React.useState(false)
+  const router = useRouter(); // Initialize the router instance
 
   return (
     <div className="h-full flex flex-col">
@@ -26,9 +29,12 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
           <Link className="btn btn-ghost normal-case text-xl" href="/">
             {/* Inserted picture "Logo" */}
             <img className="h-4 md:h-12" alt="Logo" src="/logos/Logo.png" />
-          </Link>
+            
+          
           {/* Inserted text "IsarMates" */}
           <span className="ml-2 text-xl font-semibold">IsarMates</span>
+          </Link>
+          
           <ul className="menu menu-horizontal px-1 space-x-2">
             {links.map(({ label, path }) => (
               <li key={path}>
@@ -45,14 +51,22 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
           {/*<AccountChecker /> */}
           {/* <ClusterUiSelect /> */}
           {/* new Buttons on the Right */}
+          
+          
           <WalletButton />
+          
+          <PathButton name="Discover Events" path_to="/events" tailwind="btn btn-primary" />
+          
           <button
               className="btn btn-primary"
-              onClick={() => createNft({name: "Test", month:"12", year:"2024"})}
+              onClick={() => {
+                createNft({ name: "Test", month: "12", year: "2024" });
+                router.push("/nfts");
+              }}
             >
-              Ein Button
+              NFT Rewards
             </button>
-          <PathButton name="Browse for Events" path_to="/events" tailwind="btn btn-primary" />
+          
           <div className="dropdown dropdown-end">
             <button
               className="btn btn-primary"
@@ -106,7 +120,7 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
               create-solana-dapp
             </a>
             */}
-            IsarMate by Oskar, Mika, Linus and Fabian for HackaTUM2024
+            IsarMates by Oskar, Mika, Linus and Fabian for HackaTUM2024
           </p>
         </aside>
       </footer>
