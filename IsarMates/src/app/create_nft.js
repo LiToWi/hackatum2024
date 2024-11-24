@@ -47,7 +47,7 @@ import {
     };
   
     try {
-      const response = await fetch("https://localhost:3000/api/nft", {
+      const response = await fetch("http://localhost:3000/api/nft", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

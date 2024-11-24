@@ -4,7 +4,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js'
 import { IconRefresh } from '@tabler/icons-react'
 import { useQueryClient } from '@tanstack/react-query'
-import { useMemo, useState } from 'react'
+import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useMemo, useState } from 'react'
 import { AppModal, ellipsify } from '../ui/ui-layout'
 import { useCluster } from '../cluster/cluster-data-access'
 import { ExplorerLink } from '../cluster/cluster-ui'
@@ -15,6 +15,22 @@ import {
   useRequestAirdrop,
   useTransferSol,
 } from './account-data-access'
+import account_data from '@/data/accounts.json'
+import Image from 'next/image'
+
+export function PersonalData() {
+  const { publicKey } = useWallet()
+  const user = account_data.accounts.find((data) => {return data.walletAddress === publicKey?.toString()});
+
+  return (
+    <div className='flex mt-[10%] flex-col justify-center items-center'>
+      <h1 className='text-4xl'>Welcome {user?.vorname} {user?.name}</h1>
+      <div className="relative w-44 h-44 rounded-full overflow-hidden">
+        <Image src={user?.profilePicture || ""} alt="Profile Picture" layout="fill" objectFit="cover" />
+      </div>
+    </div>
+  )
+}
 
 export function AccountBalance({ address }: { address: PublicKey }) {
   const query = useGetBalance({ address })
@@ -27,6 +43,7 @@ export function AccountBalance({ address }: { address: PublicKey }) {
     </div>
   )
 }
+
 export function AccountChecker() {
   const { publicKey } = useWallet()
   if (!publicKey) {
@@ -73,13 +90,6 @@ export function AccountButtons({ address }: { address: PublicKey }) {
       <ModalReceive address={address} show={showReceiveModal} hide={() => setShowReceiveModal(false)} />
       <ModalSend address={address} show={showSendModal} hide={() => setShowSendModal(false)} />
       <div className="space-x-2">
-        <button
-          disabled={cluster.network?.includes('mainnet')}
-          className="btn btn-xs lg:btn-md btn-outline"
-          onClick={() => setShowAirdropModal(true)}
-        >
-          Airdrop
-        </button>
         <button
           disabled={wallet.publicKey?.toString() !== address.toString()}
           className="btn btn-xs lg:btn-md btn-outline"

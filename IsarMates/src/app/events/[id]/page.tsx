@@ -54,7 +54,14 @@ export default function EventDetailsPage() {
           <div className="text-center">
             <button
               className="bg-green-500 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-green-600 shadow-md transition duration-200"
-              onClick={() => alert("Sign-up functionality coming soon!")}
+              onClick={() => {
+                if (!localStorage.getItem("registeredEvents")) {
+                  localStorage.setItem("registeredEvents", "" + event.event_id);
+                }
+                else {
+                  localStorage.setItem("registeredEvents", localStorage.getItem("registeredEvents") + "," + event.event_id);
+                }
+              }}
             >
               Sign Up
             </button>

@@ -4,7 +4,7 @@
         "name": "Mustermann",
         "vorname": "Max",
         "emailAddress": "max.mustermann@example.com",
-        "profilePicture": "IsarMates/public/logos/user-images/MaxMustermann.jpeg",
+        "profilePicture": "/logos/user-images/MaxMustermann.jpeg",
         "telephoneNumber": "+4917637428734",
         "address": {
           "street": "Musterstraße 12",
@@ -14,13 +14,13 @@
         "userID": "user1",
         "password": "1",
         "walletAddress": "8mnLs5BBypWtjsEmPTJSLS6Z9tXSv3B2bGb99iudAqtH",
-        "eventHistory": ["event001", "event002"]
+        "eventHistory": []
       },
       {
         "name": "Schmidt",
         "vorname": "Lisa",
         "emailAddress": "lisa.schmidt@example.com",
-        "profilePicture": "IsarMates/public/logos/user-images/LisaSchmidt.jpeg",
+        "profilePicture": "/logos/user-images/LisaSchmidt.jpeg",
         "telephoneNumber": "+4915123456789",
         "address": {
           "street": "Bahnhofstraße 7",
@@ -30,13 +30,13 @@
         "userID": "user2",
         "password": "2",
         "walletAddress": "6zXdLWW9mRDqfYemESMr7fV4TssbicbVDBnXhoVKH8CF",
-        "eventHistory": ["event003", "event004"]
+        "eventHistory": []
       },
       {
         "name": "Pascal",
         "vorname": "Kevin",
         "emailAddress": "kevin.pascal@example.com",
-        "profilePicture": "IsarMates/public/logos/user-images/KevinPascal.jpeg",
+        "profilePicture": "logos/user-images/KevinPascal.jpeg",
         "telephoneNumber": "+491732987654",
         "address": {
           "street": "Parkallee 33",
@@ -46,7 +46,7 @@
         "userID": "user3",
         "password": "3", 
         "walletAddress": "C56VVW85uQwxgGw9NsjHwSQ4C2pCpFRjRarXZxLwyVJj",
-        "eventHistory": ["event005", "event006"]
+        "eventHistory": []
       }
     ]
   }
