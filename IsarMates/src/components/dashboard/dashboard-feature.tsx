@@ -1,11 +1,14 @@
 "use client";
+import { useWallet } from "@solana/wallet-adapter-react";
 import { useRouter } from "next/navigation"; // Correct import for useRouter in "use client" context
 
 export default function DashboardFeature() {
   const router = useRouter(); // Initialize the router instance
 
+  const { publicKey } = useWallet();
+
   return (
-    <div className="w-screen h-screen overflow-hidden grid grid-cols-2 grid-rows-2 gap-4 p-4 h-[95%]">
+    <div className="w-screen h-screen overflow-hidden grid grid-cols-2 grid-rows-2 gap-4 p-4 h-[90%]">
       {/* Discover Events */}
       <div className="relative overflow-hidden rounded-lg shadow-lg">
         <button
@@ -24,7 +27,7 @@ export default function DashboardFeature() {
       {/* Claim NFT Rewards */}
       <div className="relative overflow-hidden rounded-lg shadow-lg">
         <button
-          onClick={() => router.push("/nfts")}
+          onClick={() => {!publicKey ? router.push("/account") : router.push("/nfts")}}
           className="relative w-full h-full bg-cover bg-center text-white transition-transform duration-300 hover:scale-105"
           style={{
             backgroundImage: "url('/start-images/rewards.jpeg')", // Replace with your image path
@@ -39,14 +42,14 @@ export default function DashboardFeature() {
       {/* Connect with Citizens */}
       <div className="relative overflow-hidden rounded-lg shadow-lg">
         <button
-          onClick={() => alert("Connect with Citizens clicked")}
+          onClick={() => false}
           className="relative w-full h-full bg-cover bg-center text-white transition-transform duration-300 hover:scale-105"
           style={{
             backgroundImage: "url('/start-images/connections.jpeg')", // Replace with your image path
           }}
         >
           <div className="bg-black bg-opacity-50 h-full flex items-center justify-center">
-            <span className="text-3xl md:text-5xl font-bold z-10">Connect with Citizens</span>
+            <span className="text-3xl md:text-5xl font-bold z-10">View your social network [[IN DEVELOPMENT]]</span>
           </div>
         </button>
       </div>
@@ -54,7 +57,7 @@ export default function DashboardFeature() {
       {/* Get Help */}
       <div className="relative overflow-hidden rounded-lg shadow-lg">
         <button
-          onClick={() => alert("Get Help clicked")}
+          onClick={() => router.push("/abus")}
           className="relative w-full h-full bg-cover bg-center text-white transition-transform duration-300 hover:scale-105"
           style={{
             backgroundImage: "url('/start-images/helping_hands.jpeg')", // Replace with your image path

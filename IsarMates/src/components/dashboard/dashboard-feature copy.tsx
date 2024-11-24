@@ -31,14 +31,14 @@ export default function DashboardFeature() {
         </button>
         {/* Connect with Citizens */}
         <button
-          onClick={() => alert("Connect with Citizens clicked")}
+          onClick={() => false}
           className="flex items-center justify-center bg-white border border-pink-600 rounded-xl shadow-lg p-20 text-center text-2xl font-bold hover:bg-blue-300 transition-all"
         >
-          Connect with Citizens
+          View your social network [[IN DEVELOPMENT]]
         </button>
         {/* Get Help */}
         <button
-          onClick={() => alert("Get Help clicked")}
+          onClick={() => router.push("/abus")}
           className="flex items-center justify-center bg-white border border-pink-600 rounded-xl shadow-lg p-20 text-center text-2xl font-bold hover:bg-blue-300 transition-all"
         >
           Get Help
