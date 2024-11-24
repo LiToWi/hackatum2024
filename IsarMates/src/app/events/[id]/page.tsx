@@ -2,9 +2,11 @@
 
 import { useParams } from "next/navigation";
 import eventsData from "@/data/events.json";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 export default function EventDetailsPage() {
   const { id } = useParams(); // Get the dynamic ID from the URL
+  const { publicKey } = useWallet();
   const eventId = Array.isArray(id) ? id[0] : id;
   const event = eventsData.events.find((event) => event.event_id === parseInt(eventId || "", 10));
 
@@ -55,12 +57,17 @@ export default function EventDetailsPage() {
             <button
               className="bg-green-500 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-green-600 shadow-md transition duration-200"
               onClick={() => {
+                if (!publicKey) {
+                  console.log("Please connect your wallet first."); 
+                }
+                else{
                 if (!localStorage.getItem("registeredEvents")) {
                   localStorage.setItem("registeredEvents", "" + event.event_id);
                 }
                 else {
                   localStorage.setItem("registeredEvents", localStorage.getItem("registeredEvents") + "," + event.event_id);
                 }
+              }
               }}
             >
               Sign Up

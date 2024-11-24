@@ -55,7 +55,9 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
           
           <WalletButton />
           
-          <PathButton name="Discover Events" path_to="/events" tailwind="btn btn-primary" />
+          <Link href={"/events"}>
+            <button className={"btn btn-primary"}>{"Discover Events"}</button>
+          </Link>
           
           <button
               className="btn btn-primary"
@@ -81,9 +83,6 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
                 </li>
                 <li>
                   <PathButton name="My Profile" path_to="/account" tailwind="btn btn-xs lg:btn-md btn-outline" />
-                </li>
-                <li>
-                  <PathButton name="My NFT Badges" path_to="/nfts" tailwind="btn btn-xs lg:btn-md btn-outline" />
                 </li>
               </ul>
             )}

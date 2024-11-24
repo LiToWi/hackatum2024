@@ -10,7 +10,6 @@ export const metadata = {
 }
 
 const links: { label: string; path: string }[] = [
-  { label: "To Github", path: 'https://github.com/LiToWi/hackatum2024' },
   { label: "About us", path: 'abus' }
 ]
 
