@@ -3,23 +3,36 @@
 import { motion, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import { MouseEventHandler } from "react";
+import { useWallet } from "@solana/wallet-adapter-react";
+import account_data from "@/data/accounts.json";
 
 // Interaction hyperparameters
 const sheenSize = 500;
 const cardRotation = 15;
 const cardScale = 1.07;
 
-export default function NFTGrid() {
-  // TODO
-  const nfts = [1,2,3,4];
+interface NFTGridProps {
+  months: Array<string>;
+}
+
+interface NFTCardProps {
+  month: string;
+}
+
+interface CardContentProps {
+  month: string;
+}
+
+export default function NFTGrid( { months } : NFTGridProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {nfts.map((nft) => (<div><NFTCard/></div>))}
+      {months.map((nft) => (<div><NFTCard month={nft} /></div>))}
     </div>
+
   )
 }
 
-export function NFTCard() {
+export function NFTCard( { month } : NFTCardProps) {
   // Raw motion values
   const xPcnt = useSpring(0, { bounce: 0 });
   const yPcnt = useSpring(0, { bounce: 0 });
@@ -109,38 +122,65 @@ export function NFTCard() {
             top: sheenY,
           }}
         />
-        <CardContent />
+        <CardContent month={month}/>
       </motion.div>
     </main>
   );
 }
 
-const CardContent = () => {
+const CardContent = ( { month } : CardContentProps) => {
+  const { publicKey } = useWallet()
+  const user = account_data.accounts.find((data) => {return data.walletAddress === publicKey?.toString()});
+
   return (
     <>
-      <div className="relative w-full aspect-square rounded-md overflow-hidden">
-        <Image src="/logos/Logo.png" alt="Profile Picture" fill />
+    <div className='flex mt-[10%] flex-col justify-center items-center'>
+      <div className="relative w-44 h-44 rounded-full overflow-hidden">
+        <Image src={user?.profilePicture || ""} alt="Profile Picture" layout="fill" objectFit="cover" />
       </div>
+    </div>
 
       <div className="flex flex-col gap-0 mt-4">
         <h1 className="text-xl font-semibold tracking-tight leading-tight">
-          Built With Code
+          {user?.vorname} {user?.name}
         </h1>
-        <p className="text-sm text-neutral-700 font-mono">YouTube</p>
+        <p className="text-sm text-neutral-700 font-mono">Attended-Events: {month === "November 2024" ? new Set(localStorage.getItem("registeredEvents")?.split(',')).size : Math.floor(Math.random()*7)}</p>
       </div>
       <div className="mt-auto flex justify-between items-center">
         <span className="text-[0.6rem] font-medium px-2 py-[3px] border-neutral-700 text-neutral-700 border-[1px] rounded-sm">
-          Est. January 2021
+          Est. {month}
         </span>
-        <button className="fill-[#FF0000] w-6 opacity-70">
-          <svg
-            role="img"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>YouTube</title>
-            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-          </svg>
+        <button className="fill-[#FF0000] w-12 opacity-70">
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 400 400"
+        role="img"
+      >
+        <title>Solana</title>
+        <defs>
+          <linearGradient id="gradient1" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stop-color="#00FFA3" />
+            <stop offset="100%" stop-color="#DC1FFF" />
+          </linearGradient>
+          <linearGradient id="gradient2" x1="1" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#00FFA3" />
+            <stop offset="100%" stop-color="#DC1FFF" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M80 100c5-5 12-10 20-10h200c9 0 13 11 7 17l-40 40c-5 5-12 10-20 10H100c-9 0-13-11-7-17z"
+          fill="url(#gradient1)"
+        />
+        <path
+          d="M300 190c-5-5-12-10-20-10H100c-9 0-13 11-7 17l40 40c5 5 12 10 20 10h200c9 0 13-11 7-17z"
+          fill="url(#gradient2)"
+        />
+        <path
+          d="M80 280c5-5 12-10 20-10h200c9 0 13 11 7 17l-40 40c-5 5-12 10-20 10H100c-9 0-13-11-7-17z"
+          fill="url(#gradient1)"
+        />
+      </svg>
+
         </button>
       </div>
     </>
