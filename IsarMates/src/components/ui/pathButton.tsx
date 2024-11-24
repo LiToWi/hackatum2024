@@ -4,6 +4,7 @@ import React from 'react';
 import { useWallet } from '@solana/wallet-adapter-react'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import { createNft } from 'src/app/create_nft'
 
 interface PathButtonProps {
     name: string;
@@ -23,10 +24,21 @@ export default function PathButton({ name, path_to , tailwind}: PathButtonProps)
     }
 
     localStorage.setItem("pub_key", JSON.stringify(publicKey.toString()));
-    console.log(localStorage.getItem("pub_key"));
-    return (
-        <Link href={`${path_to}`}>
-            <button className={tailwind}>{name}</button>
-        </Link>
-    );
+
+    if (name === "Claim NFT Rewards") {
+        return (
+            <Link href={"/nfts"}>
+                <button onClick={() => {createNft({ name: "Test", month: "12", year: "2024" });}} 
+                className={tailwind}>{name}
+                </button>
+            </Link>
+        );
+    }
+    else {
+        return (
+            <Link href={`${path_to}`}>
+                <button className={tailwind}>{name}</button>
+            </Link>
+        );
+    }
 }

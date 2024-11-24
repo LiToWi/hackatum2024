@@ -10,7 +10,6 @@ import {AccountChecker} from '../account/account-ui'
 import {ClusterChecker, ClusterUiSelect, ExplorerLink} from '../cluster/cluster-ui'
 import {WalletButton} from '../solana/solana-provider'
 import PathButton from './pathButton'
-import { createNft } from 'src/app/create_nft'
 import { useRouter } from "next/navigation"; // Correct import for useRouter in "use client" context
 
 /* Inserted picture "Logo" ?? */
@@ -59,15 +58,8 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
             <button className={"btn btn-primary"}>{"Discover Events"}</button>
           </Link>
           
-          <button
-              className="btn btn-primary"
-              onClick={() => {
-                createNft({ name: "Test", month: "12", year: "2024" });
-                router.push("/nfts");
-              }}
-            >
-              NFT Rewards
-            </button>
+
+          <PathButton name="Claim NFT Rewards" path_to="/nfts" tailwind="btn btn-primary" />
           
           <div className="dropdown dropdown-end">
             <button
@@ -216,11 +208,3 @@ export function useTransactionToast() {
     )
   }
 }
-
-const handleClick = () => {
-  createNft({
-    name: "Test NFT",
-    month: "12",
-    year: "2024",
-  });
-};
