@@ -91,7 +91,7 @@ import {
     name: "Thomas Miller",
     month: "November",
     year: "2024",
-    badge: "https://example.com/badge.png",
-    logo: "https://example.com/logo.png",
+    badge: "https://ivory-rear-earthworm-308.mypinata.cloud/ipfs/QmZeoV4wmBX1FNdMe8WrC6Rwpjh82LpqeRqqWYket7BS1e",
+    logo: "https://ivory-rear-earthworm-308.mypinata.cloud/ipfs/QmSeknpbhviWsbcQBBjYeXR7GzjHqWAb7rp656GhCSsrL6",
   });
   
