@@ -22,9 +22,23 @@ interface Event {
 export default function EventsPage() {
   const [events, setEvents] = useState<Event[]>(eventsData.events);
   const [showFilterModal, setShowFilterModal] = useState(false);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]); 
+  const [showModal, setShowModal] = useState(false); // Add Event modal visibility state
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const modalRef = useRef<HTMLDivElement | null>(null);
+
+  const filterModalRef = useRef<HTMLDivElement | null>(null);
+  const addEventModalRef = useRef<HTMLDivElement | null>(null);
+
+  const [newEvent, setNewEvent] = useState({
+    title: "",
+    description: "",
+    location: "",
+    date: "",
+    time: "",
+    image: "",
+    duration: "",
+    max_participants: "",
+  });
 
   const categories = [
     { name: "Outdoor", icon: <FaTree /> },
@@ -40,7 +54,29 @@ export default function EventsPage() {
     );
   };
 
-  // updated block to combine filter and search 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    let value = e.target.value;
+
+    if (e.target.name === "max_participants") {
+      value = Math.max(0, parseInt(value) || 0).toString();
+    }
+
+    setNewEvent({ ...newEvent, [e.target.name]: value });
+  };
+
+  
+
+
+
+  const handleAddEvent = () => {
+    const eventWithId = {
+      ...newEvent,
+      event_id: events.length + 1, // Generate a new ID
+    };
+    setEvents([...events, eventWithId]);
+    setShowModal(false); // Close the modal
+  };
+
   const filteredEvents = events.filter((event) => {
     const matchesSearch = searchTerm
       ? event.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -56,10 +92,27 @@ export default function EventsPage() {
     return matchesSearch && matchesCategory;
   });
 
-  const closeModalOnOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const closeModalOnOutsideClick = (
+    e: React.MouseEvent<HTMLDivElement>,
+    modalRef: React.RefObject<HTMLDivElement>,
+    closeModal: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
     if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-      setShowFilterModal(false);
+      closeModal(false);
     }
+  };
+
+  const isFormValid = (): boolean => {
+    return (
+      newEvent.title.trim() !== "" &&
+      newEvent.description.trim() !== "" &&
+      newEvent.location.trim() !== "" &&
+      newEvent.date.trim() !== "" &&
+      newEvent.time.trim() !== "" &&
+      newEvent.duration.trim() !== "" &&
+      newEvent.max_participants.trim() !== "" &&
+      newEvent.image.trim() !== ""
+    );
   };
 
   return (
@@ -70,7 +123,7 @@ export default function EventsPage() {
       </div>
       <div className="relative flex items-center justify-center mb-6">
         <button
-          onClick={() => alert("Add event functionality coming soon!")}
+          onClick={() => setShowModal(true)}
           className="btn-lg text-white bg-blue-500 rounded hover:bg-blue-600"
         >
           + Add New Event
@@ -133,10 +186,12 @@ export default function EventsPage() {
       {showFilterModal && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-          onClick={closeModalOnOutsideClick}
+          onClick={(e) =>
+            closeModalOnOutsideClick(e, filterModalRef, setShowFilterModal)
+          }
         >
           <div
-            ref={modalRef}
+            ref={filterModalRef}
             className="bg-gray-700 rounded-lg p-6 w-full max-w-lg shadow-lg"
           >
             <h2 className="text-2xl font-bold mb-4">Filter by Category</h2>
@@ -170,6 +225,102 @@ export default function EventsPage() {
           </div>
         </div>
       )}
+
+      {/* Modal for Adding New Event */}
+      {showModal && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+          onClick={(e) => closeModalOnOutsideClick(e, addEventModalRef, setShowModal)}
+        >
+          <div
+            ref={addEventModalRef}
+            className="bg-gray-700 rounded-lg p-6 w-full max-w-lg shadow-lg"
+          >
+            <h2 className="text-2xl font-bold mb-4">Add New Event</h2>
+            <div className="space-y-4">
+              <input
+                type="text"
+                name="title"
+                placeholder="Event Title"
+                value={newEvent.title}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+              />
+              <textarea
+                name="description"
+                placeholder="Event Description"
+                value={newEvent.description}
+                onChange={handleChange}
+                className="textarea textarea-bordered w-full"
+              ></textarea>
+              <input
+                type="text"
+                name="location"
+                placeholder="Location"
+                value={newEvent.location}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+              />
+              <input
+                type="date"
+                name="date"
+                value={newEvent.date}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+              />
+              <input
+                type="time"
+                name="time"
+                value={newEvent.time}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+              />
+              <input
+                type="text"
+                name="duration"
+                placeholder="Duration (e.g., 2 hours)"
+                value={newEvent.duration}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+              />
+              <input
+                type="number"
+                name="max_participants"
+                placeholder="Max Participants"
+                value={newEvent.max_participants}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+              />
+              <input
+                type="text"
+                name="image"
+                placeholder="Image URL"
+                value={newEvent.image}
+                onChange={handleChange}
+                className="input input-bordered w-full"
+              />
+            </div>
+            <div className="flex justify-end mt-6 space-x-4">
+              <button
+                onClick={() => setShowModal(false)}
+                className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleAddEvent}
+                disabled={!isFormValid()}
+                className={`bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 ${
+                  !isFormValid() ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+              >
+                Add Event
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

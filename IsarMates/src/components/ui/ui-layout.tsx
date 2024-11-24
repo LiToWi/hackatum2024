@@ -10,13 +10,16 @@ import {AccountChecker} from '../account/account-ui'
 import {ClusterChecker, ClusterUiSelect, ExplorerLink} from '../cluster/cluster-ui'
 import {WalletButton} from '../solana/solana-provider'
 import PathButton from './pathButton'
+import { useRouter } from "next/navigation"; // Correct import for useRouter in "use client" context
 
 /* Inserted picture "Logo" ?? */
 /*import {EventButton} from '../event/event-ui' ??*/
+  
 
 export function UiLayout({ children, links }: { children: ReactNode; links: { label: string; path: string }[] }) {
   const pathname = usePathname()
   const [showAccountMenu, setShowAccountMenu] = React.useState(false)
+  const router = useRouter(); // Initialize the router instance
 
   return (
     <div className="h-full flex flex-col">
@@ -25,9 +28,12 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
           <Link className="btn btn-ghost normal-case text-xl" href="/">
             {/* Inserted picture "Logo" */}
             <img className="h-4 md:h-12" alt="Logo" src="/logos/Logo.png" />
-          </Link>
+            
+          
           {/* Inserted text "IsarMates" */}
           <span className="ml-2 text-xl font-semibold">IsarMates</span>
+          </Link>
+          
           <ul className="menu menu-horizontal px-1 space-x-2">
             {links.map(({ label, path }) => (
               <li key={path}>
@@ -44,14 +50,17 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
           {/*<AccountChecker /> */}
           {/* <ClusterUiSelect /> */}
           {/* new Buttons on the Right */}
+          
+          
           <WalletButton />
-          <button
-              className="btn btn-primary"
-              onClick={() => false}
-            >
-              Ein Button
-            </button>
-          <PathButton name="Browse for Events" path_to="/events" tailwind="btn btn-primary" />
+          
+          <Link href={"/events"}>
+            <button className={"btn btn-primary"}>{"Discover Events"}</button>
+          </Link>
+          
+
+          <PathButton name="Claim NFT Rewards" path_to="/nfts" tailwind="btn btn-primary" />
+          
           <div className="dropdown dropdown-end">
             <button
               className="btn btn-primary"
@@ -66,9 +75,6 @@ export function UiLayout({ children, links }: { children: ReactNode; links: { la
                 </li>
                 <li>
                   <PathButton name="My Profile" path_to="/account" tailwind="btn btn-xs lg:btn-md btn-outline" />
-                </li>
-                <li>
-                  <PathButton name="My NFT Badges" path_to="/nfts" tailwind="btn btn-xs lg:btn-md btn-outline" />
                 </li>
               </ul>
             )}
