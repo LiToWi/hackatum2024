@@ -47,7 +47,7 @@ import {
     };
   
     try {
-      const response = await fetch("https://localhost:3000/api/nft", {
+      const response = await fetch("http://localhost:3000/api/nft", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,9 +59,10 @@ import {
         const errorText = await response.text();
         throw new Error(`Failed to POST metadata: ${response.status} ${errorText}`);
       }
+      console.log(response)
   
       const responseBody = await response.json(); // Assuming server returns JSON
-      const metadataUri = `https://localhost:3000/api/nft?hash=${responseBody.hash}`;
+      const metadataUri = `http://localhost:3000/api/nft?hash=${responseBody}`;
   
       const asset = generateSigner(umi);
   
