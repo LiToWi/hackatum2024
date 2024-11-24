@@ -9,7 +9,17 @@ const sheenSize = 500;
 const cardRotation = 15;
 const cardScale = 1.07;
 
-export default function NFTCard() {
+export default function NFTGrid() {
+  // TODO
+  const nfts = [1,2,3,4];
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {nfts.map((nft) => (<div><NFTCard/></div>))}
+    </div>
+  )
+}
+
+export function NFTCard() {
   // Raw motion values
   const xPcnt = useSpring(0, { bounce: 0 });
   const yPcnt = useSpring(0, { bounce: 0 });
@@ -20,12 +30,12 @@ export default function NFTCard() {
   // Calculated rotation values for styling
   const rotateX = useTransform(
     yPcnt,
-    [-0.5, 0.5],
+    [-0.4, 0.4],
     [`-${cardRotation}deg`, `${cardRotation}deg`]
   );
   const rotateY = useTransform(
     xPcnt,
-    [-0.5, 0.5],
+    [-0.4, 0.4],
     [`${cardRotation}deg`, `-${cardRotation}deg`]
   );
 
@@ -90,7 +100,7 @@ export default function NFTCard() {
         }}
       >
         <motion.div
-          className="absolute z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-200 rounded-full blur-md"
+          className="absolute z-10 opacity-0 group-hover:opacity-20 transition-opacity duration-200 rounded-full blur-md"
           style={{
             height: sheenSize,
             width: sheenSize,
